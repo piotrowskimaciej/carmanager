@@ -1,4 +1,4 @@
-package com.project.carmanager.entity;
+package com.project.carmanager.domain.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

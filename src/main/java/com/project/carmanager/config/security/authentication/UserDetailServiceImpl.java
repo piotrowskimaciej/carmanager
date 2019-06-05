@@ -1,4 +1,4 @@
-package com.project.carmanager.security.authentication;
+package com.project.carmanager.config.security.authentication;
 
 import com.project.carmanager.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

@@ -4,13 +4,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.CONFLICT)
-public class ObjectAlreadyExistsException extends RuntimeException{
+public class ObjectAlreadyExistException extends RuntimeException{
 
-    public ObjectAlreadyExistsException(Class object) {
+    public ObjectAlreadyExistException(Class object) {
         super("Object of type " + object.getSimpleName() + " actually is in database!");
     }
 
-    public ObjectAlreadyExistsException(String message) {
+    public ObjectAlreadyExistException(String message) {
         super(message);
     }
 }

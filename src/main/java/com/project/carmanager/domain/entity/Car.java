@@ -1,13 +1,19 @@
-package com.project.carmanager.entity;
+package com.project.carmanager.domain.entity;
 
-import com.project.carmanager.enums.CarType;
-import com.project.carmanager.enums.EngineType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.project.carmanager.domain.enums.CarType;
+import com.project.carmanager.domain.enums.EngineType;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Builder
 @Entity
 @Table(name = "car")
@@ -49,7 +55,9 @@ public class Car {
     @Column(name = "horse_power")
     private int horsePower;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "user_id")
     private User user;
 

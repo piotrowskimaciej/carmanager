@@ -1,7 +1,7 @@
-package com.project.carmanager.dto;
+package com.project.carmanager.domain.dto;
 
-import com.project.carmanager.enums.CarType;
-import com.project.carmanager.enums.EngineType;
+import com.project.carmanager.domain.enums.CarType;
+import com.project.carmanager.domain.enums.EngineType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

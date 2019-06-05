@@ -1,6 +1,6 @@
-package com.project.carmanager.security;
+package com.project.carmanager.config.security;
 
-import com.project.carmanager.security.authentication.UserDetailServiceImpl;
+import com.project.carmanager.config.security.authentication.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,14 +17,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private static final String successUrl = "/swagger-ui.html";
+
     @Autowired
     private UserDetailServiceImpl userDetailService;
 
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/*").authenticated()
-                .and().httpBasic().and().formLogin().defaultSuccessUrl("http://www.google.com");
+                .antMatchers("/*", "/swagger-resources", "/swagger-ui.html").authenticated()
+                .and().httpBasic().and().formLogin().defaultSuccessUrl(successUrl, true);
     }
 
     @Override
