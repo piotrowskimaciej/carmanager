@@ -6,11 +6,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
-@NoArgsConstructor
-
+@Builder
 @Entity
 @Table(name = "car")
 public class Car {
@@ -22,15 +20,21 @@ public class Car {
     @Column(name = "brand")
     private String brand;
 
+    @Column(name = "vin_number")
+    private String vinNumber;
+
     @Column(name = "car_type")
     @Enumerated(value = EnumType.STRING)
     private CarType carType;
+
+    @Column(name = "year_of_production")
+    private int yearOfProduction;
 
     @Column(name = "next_service")
     private LocalDate nextService;
 
     @Column(name = "mileage")
-    private Long mileage;
+    private int mileage;
 
     @Column(name = "oil_type")
     private String oilType;
@@ -41,7 +45,12 @@ public class Car {
     @Column(name = "engine_type")
     @Enumerated(EnumType.STRING)
     private EngineType engineType;
+
     @Column(name = "horse_power")
     private int horsePower;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }
